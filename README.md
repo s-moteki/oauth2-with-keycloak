@@ -72,24 +72,26 @@ curl http://localhost:8080/private
 ### 管理画面へのアクセス
 
 下記情報を使用しブラウザからアクセス
-username : admin
-password : admin
+username : admin  
+password : admin  
 url : http://localhost:18080/auth
 
 ### Auth2.0標準フローによる保護されたAPIアクセスへのアクセス
 
-①下記URLからログイン画面へアクセスし、下記情報でログイン(または新規登録)  
+#### 1 下記URLからログイン画面へアクセスし、下記情報でログイン(または新規登録)
+
 username : test-user
 password : password
 
 > http://localhost:18080/auth/realms/test_service/protocol/openid-connect/auth?client_id=test_client&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_mode=query&response_type=code
 
-②ログイン成功後、画面遷移しURLに下記の形式で認証コードが返される  
+#### 2 ログイン成功後、画面遷移しURLに下記の形式で認証コードが返される  
 ※実際にはwebサーバーにリダイレクトさせて認証コードを取り出す
 
 > http://localhost:8080/?session_state=XXXX&code=認証コード
 
-③前のステップで取得した認証コードからアクセストークンを取得  
+#### 3 前のステップで取得した認証コードからアクセストークンを取得  
+
 ※①のステップで新規登録した場合はusername=登録したユーザー名になる
 > <http://localhost:18080/auth/realms/test_service/protocol/openid-connect/token> -d 'grant_type=authorization_code&username=test-user&client_id=test_client&client_secret=wgefmNBGop63ctr564st1mDtWuNfP1Uw&code=認証コード&redirect_uri=<http://localhost:8080/>'
 
@@ -108,7 +110,7 @@ password : password
 }
 ```
 
-④アクセストークンを認証ヘッダーに設定し、保護されたエンドポイントへリクエスト
+#### 4 アクセストークンを認証ヘッダーに設定し、保護されたエンドポイントへリクエスト
 
 ```bash
 
