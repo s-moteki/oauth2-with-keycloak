@@ -1,0 +1,45 @@
+version: '3.6'
+services:
+  keycloak:
+    build:
+      context: .docker/keycloak
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_IMPORT: /tmp/export/test_service.json
+      DB_VENDOR: MYSQL
+      DB_ADDR: mysql
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: password
+    ports:
+      - "18080:8080"
+    volumes:
+      - ./.docker/keycloak/export/test_service.json:/tmp/export/test_service.json
+    depends_on:
+      - mysql
+      - nginx
+      - api
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - key_cloak_mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: password
+  nginx:
+    build:
+      context: .docker/nginx
+    ports:
+      - "8080:80"
+  api:
+    build:
+      context: .docker/json-server
+    volumes:
+      - .docker/json-server/:/data
+
+volumes:
+  key_cloak_mysql_data:
+    driver: local
