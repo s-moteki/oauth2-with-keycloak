@@ -1,0 +1,10 @@
+{
+	"public":{
+		"message" : "ok",
+		"access_type":"public"
+	},
+	"private":{
+		"message" : "ok",
+		"access_type":"private"
+	}
+}
