@@ -34,7 +34,7 @@ curl http://localhost:18080
 curl http://localhost:8080
 ```
 
-## デフォルト
+## デフォルト操作
 
 ### 公開されたAPIへのアクセス
 
@@ -93,7 +93,7 @@ password : password
 #### 3 前のステップで取得した認証コードからアクセストークンを取得  
 
 ※①のステップで新規登録した場合はusername=登録したユーザー名になる
-> <http://localhost:18080/auth/realms/test_service/protocol/openid-connect/token> -d 'grant_type=authorization_code&username=test-user&client_id=test_client&client_secret=wgefmNBGop63ctr564st1mDtWuNfP1Uw&code=認証コード&redirect_uri=<http://localhost:8080/>'
+> curl http://localhost:18080/auth/realms/test_service/protocol/openid-connect/token> -d 'grant_type=authorization_code&username=test-user&client_id=test_client&client_secret=wgefmNBGop63ctr564st1mDtWuNfP1Uw&code=認証コード&redirect_uri=<http://localhost:8080/'
 
 レスポンス例
 
