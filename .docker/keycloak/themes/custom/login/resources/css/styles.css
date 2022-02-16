@@ -1,0 +1,23 @@
+:root {
+	--pf-global--primary-color--100: #35495e;
+	--pf-global--primary-color--200: #35495e;
+	--default-background-color: #f8f8f8;
+}
+
+#kc-header-wrapper {
+	color:#666;
+}
+
+.login-pf body {
+	background-image: none;
+	background-color: #f8f8f8;
+}
+
+.login-pf a:hover {
+	color: var(--link-hover-color);
+	text-decoration: none;
+}
+
+.pf-c-form-control {
+	--pf-global--primary-color--100: unset;
+}
