@@ -4,6 +4,8 @@ keycloak を用いた認証機能(OAuth2.0、OpenID Connect)の提供
 
 このリポジトリでは、APIゲートウェイを経由したエンドポイントへのアクセスを認証機能で保護するケースを想定
 
+![フロー](https://github.com/s-moteki/oauth2-with-keycloak/blob/main/docs/flow.jpg?raw=true)
+
 ## 構成
 
 | ミドルウェア・OSS | 用途              |
@@ -14,6 +16,9 @@ keycloak を用いた認証機能(OAuth2.0、OpenID Connect)の提供
 | node.js           | API ゲートウェイ(2)  |
 | json-server       | モック API(保護対象)        |
 | docker-compose       | コンテナ環境        |
+
+認可サーバー、API Gateway、APIを構成(下記青線)
+![構成図](https://github.com/s-moteki/oauth2-with-keycloak/blob/main/docs/infrastructure.jpg?raw=true)
 
 ## セットアップ
 
