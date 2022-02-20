@@ -1,5 +1,6 @@
 version: '3.6'
 services:
+  # 認可コンテナ
   keycloak:
     build:
       context: .docker/keycloak
@@ -18,8 +19,7 @@ services:
       - ./.docker/keycloak/export/test_service.json:/tmp/export/test_service.json
     depends_on:
       - mysql
-      - nginx
-      - api
+  # keycloak外部ストレージ
   mysql:
     image: mysql:5.7
     volumes:
@@ -29,11 +29,25 @@ services:
       MYSQL_DATABASE: keycloak
       MYSQL_USER: keycloak
       MYSQL_PASSWORD: password
-  nginx:
+  # APIゲートウェイ(nginx)
+  nginx-gatewa:
     build:
       context: .docker/nginx
+    depends_on:
+      - keycloak
+      - api
     ports:
       - "8080:80"
+  # APIゲートウェイ(node)
+  node-gateway:
+    build:
+      context: gateway/node-js
+    depends_on:
+      - keycloak
+      - api
+    ports:
+      - "8080:8000"
+  # 保護対象API
   api:
     build:
       context: .docker/json-server
