@@ -3,7 +3,7 @@ services:
   # 認可コンテナ
   keycloak:
     build:
-      context: .docker/keycloak
+      context: keycloak
     environment:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin
@@ -16,7 +16,7 @@ services:
     ports:
       - "18080:8080"
     volumes:
-      - ./.docker/keycloak/export/test_service.json:/tmp/export/test_service.json
+      - ./keycloak/export/test_service.json:/tmp/export/test_service.json
     depends_on:
       - mysql
   # keycloak外部ストレージ
@@ -30,9 +30,9 @@ services:
       MYSQL_USER: keycloak
       MYSQL_PASSWORD: password
   # APIゲートウェイ(nginx)
-  nginx-gatewa:
+  nginx-gateway:
     build:
-      context: .docker/nginx
+      context: gateway/nginx
     depends_on:
       - keycloak
       - api
@@ -50,9 +50,9 @@ services:
   # 保護対象API
   api:
     build:
-      context: .docker/json-server
+      context: json-server
     volumes:
-      - .docker/json-server/:/data
+      - ./json-server/:/data
 
 volumes:
   key_cloak_mysql_data:
