@@ -25,8 +25,12 @@ keycloak を用いた認証機能(OAuth2.0、OpenID Connect)の提供
 # リポジトリに移動
 cd oauth2-with-keycloak
 
-# docker-composeの起動
-docker-compose up keycloak
+# docker-composeを以下のどちらかで起動
+
+# apiゲートウェイをnodeで起動
+docker-compose up node-gateway
+# apiゲートウェイをnginxで起動
+docker-compose up nginx-gateway
 
 # keycloak疎通確認
 curl http://localhost:18080
@@ -37,7 +41,7 @@ curl http://localhost:8080
 
 ## デフォルト操作
 
-> ### 公開されたAPIへのアクセス
+> ### **公開されたAPIへのアクセス**
 
 ```bash
 curl http://localhost:8080
@@ -60,39 +64,40 @@ curl http://localhost:8080
 curl http://localhost:8080/private
 ```
 
-レスポンス
+未認証時レスポンス
 
 ```json
 
  {
-    "message": "forbidden"
+    "message": "unauthorized"
  }
 
 ```
 
-> ### 管理画面へのアクセス
+> ### **管理画面へのアクセス**
 
 下記情報を使用しブラウザからアクセス  
 username : admin  
 password : admin  
+
 url : http://localhost:18080/auth
 
-> ### Auth2.0標準フローによる保護されたAPIへのアクセス
+> ### **Auth2.0標準フローによる保護されたAPIへのアクセス**
 
-#### ① 下記URLからログイン画面へアクセスし、下記情報でログイン(または新規登録)
+#### 1. 下記URLからログイン画面へアクセスし、下記情報でログイン(または新規登録)
 
 username : test-user
 password : password
 
 > http://localhost:18080/auth/realms/test_service/protocol/openid-connect/auth?client_id=test_client&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_mode=query&response_type=code
 
-#### ② ログイン成功後、画面遷移しURLに下記の形式で認証コードが返される  
+#### 2. ログイン成功後、画面遷移しURLに下記の形式で認証コードが返される  
 
 ※実際にはwebサーバーにリダイレクトさせて認証コードを取り出す
 
 > http://localhost:8080/?session_state=XXXX&code=認証コード
 
-#### ③ 前のステップで取得した認証コードからアクセストークンを取得  
+#### 3. 前のステップで取得した認証コードからアクセストークンを取得  
 
 ※①のステップで新規登録した場合はusername=登録したユーザー名になる
 
@@ -117,7 +122,7 @@ curl http://localhost:18080/auth/realms/test_service/protocol/openid-connect/tok
 }
 ```
 
-#### ④ アクセストークンを認証ヘッダーに設定し、保護されたエンドポイントへリクエスト
+#### 4. アクセストークンを認証ヘッダーに設定し、保護されたエンドポイントへリクエスト
 
 ```bash
 
