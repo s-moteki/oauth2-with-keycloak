@@ -39,15 +39,13 @@ curl http://localhost:18080
 curl http://localhost:8080
 ```
 
-## デフォルト操作
+## 初期提供機能
 
-> ### **公開されたAPIへのアクセス**
+### **● 公開されたAPIへのアクセス**
 
 ```bash
 curl http://localhost:8080
 ```
-
-レスポンス
 
 ```json
 
@@ -74,7 +72,7 @@ curl http://localhost:8080/private
 
 ```
 
-> ### **管理画面へのアクセス**
+### **● 管理画面へのアクセス**
 
 下記情報を使用しブラウザからアクセス  
 username : admin  
@@ -82,7 +80,7 @@ password : admin
 
 url : http://localhost:18080/auth
 
-> ### **Auth2.0標準フローによる保護されたAPIへのアクセス**
+### **● Auth2.0標準フローによる保護されたAPIへのアクセス**
 
 #### 1. 下記URLからログイン画面へアクセスし、下記情報でログイン(または新規登録)
 
