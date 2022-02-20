@@ -9,8 +9,9 @@ keycloak を用いた認証機能(OAuth2.0、OpenID Connect)の提供
 | ミドルウェア・OSS | 用途              |
 | ----------------- | ----------------- |
 | keycloak          | 認証機能の提供         |
-| mysql             | keycloak の設定永続化 |
-| nginx             | API ゲートウェイ  |
+| mysql             | keycloak の永続化ストレージ |
+| nginx             | API ゲートウェイ(1)  |
+| node.js           | API ゲートウェイ(2)  |
 | json-server       | モック API(保護対象)        |
 | docker-compose       | コンテナ環境        |
 
@@ -97,7 +98,7 @@ password : password
 
 ```bash
 
- http://localhost:18080/auth/realms/test_service/protocol/openid-connect/token> -d 'grant_type=authorization_code&username=test-user&client_id=test_client&client_secret=wgefmNBGop63ctr564st1mDtWuNfP1Uw&code=認証コード&redirect_uri=<http://localhost:8080/'
+curl http://localhost:18080/auth/realms/test_service/protocol/openid-connect/token -d 'grant_type=authorization_code&username=test-user&client_id=test_client&client_secret=wgefmNBGop63ctr564st1mDtWuNfP1Uw&code=認証コード&redirect_uri=http://localhost:8080/'
 
 ```
 
@@ -120,7 +121,7 @@ password : password
 
 ```bash
 
-curl --location --request GET 'http://localhost:8080/private' \
+curl 'http://localhost:8080/private' \
 --header 'Authorization: Bearer アクセストークン'
 
 ```
