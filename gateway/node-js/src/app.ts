@@ -10,7 +10,7 @@ http.createServer(async (req: IncomingMessage, res: ServerResponse): Promise<voi
     const isValid = await validateToken(req.headers.authorization);
     if (!isValid) {
       res.statusCode = 401;
-      res.write('Unauthorized');
+      res.write(JSON.stringify({message : 'unauthorized'}));
       res.end();
       return ;
     }
