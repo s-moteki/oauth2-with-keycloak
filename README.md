@@ -41,7 +41,7 @@ docker-compose up nginx-gateway
 curl http://localhost:18080
 
 # api疎通確認
-curl http://localhost:8080
+curl http://localhost:8080/public
 ```
 
 ## 初期提供機能
@@ -49,7 +49,7 @@ curl http://localhost:8080
 ### **● 公開されたAPIへのアクセス**
 
 ```bash
-curl http://localhost:8080
+curl http://localhost:8080/public
 ```
 
 ```json
