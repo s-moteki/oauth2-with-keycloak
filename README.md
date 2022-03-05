@@ -30,19 +30,18 @@ keycloak を用いた認証機能(OAuth2.0、OpenID Connect)の提供
 # リポジトリに移動
 cd oauth2-with-keycloak
 
-# docker-composeを以下のどちらかで起動
-
-# apiゲートウェイをnodeで起動
+# apiゲートウェイをnodeで起動する場合
 docker-compose up node-gateway
-# apiゲートウェイをnginxで起動
+# apiゲートウェイをnginxで起動する場合
 docker-compose up nginx-gateway
-
-# keycloak疎通確認
-curl http://localhost:18080
 
 # api疎通確認
 curl http://localhost:8080/public
 ```
+
+Keycloak起動確認：ブラウザで下記URLから管理画面へアクセス  
+
+> http://localhost:18080
 
 ## 初期提供機能
 
