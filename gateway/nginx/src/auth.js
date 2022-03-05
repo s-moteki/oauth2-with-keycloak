@@ -14,3 +14,5 @@ function introspect(r) {
     }
   );
 }
+
+export default {introspect};
