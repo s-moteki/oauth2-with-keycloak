@@ -1,4 +1,4 @@
-name: build
+name: test_build
 on:
   push:
     branches: [ main ]
