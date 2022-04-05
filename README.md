@@ -39,9 +39,15 @@ docker-compose up nginx-gateway
 curl http://localhost:8080/public
 ```
 
-Keycloak起動確認：ブラウザで下記URLから管理画面へアクセス  
+##### Keycloakの起動確認  
 
-> http://localhost:18080
+ブラウザで下記URLから管理画面へアクセス  
+
+> <http://localhost:18080/auth/admin/>
+
+以下の画面が表示されていれば起動完了
+
+![admin_front_image](https://github.com/s-moteki/oauth2-with-keycloak/blob/main/docs/keycloak_admin_front.png?raw=true)
 
 ## 初期提供機能
 
