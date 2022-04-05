@@ -49,7 +49,15 @@ curl http://localhost:8080/public
 
 ![admin_front_image](https://github.com/s-moteki/oauth2-with-keycloak/blob/main/docs/keycloak_admin_front.png?raw=true)
 
-## 初期提供機能
+## 使い方・検証方法
+
+### **● 管理画面へのアクセス**
+
+下記情報を使用しブラウザからアクセス  
+username : admin  
+password : admin  
+
+url : <http://localhost:18080/auth/admin>
 
 ### **● 公開されたAPIへのアクセス**
 
@@ -81,14 +89,6 @@ curl http://localhost:8080/private
  }
 
 ```
-
-### **● 管理画面へのアクセス**
-
-下記情報を使用しブラウザからアクセス  
-username : admin  
-password : admin  
-
-url : http://localhost:18080/auth
 
 ### **● Auth2.0標準フローによる保護されたAPIへのアクセス**
 
