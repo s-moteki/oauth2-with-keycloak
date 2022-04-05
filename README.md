@@ -1,11 +1,13 @@
 # oauth2-with-keycloak
-
+![build](https://github.com/s-moteki/oauth2-with-keycloak/actions/workflows/build.yml/badge.svg)
+  
 keycloak を用いた認可・認証機能(OAuth2.0、OpenID Connect)の提供。
 
 このリポジトリでは、APIゲートウェイを経由したエンドポイントへのアクセスを認可機能(keycloak自身で認証が可能)で保護するケースを想定。  
 
 ![フロー](https://github.com/s-moteki/oauth2-with-keycloak/blob/main/docs/flow.jpg?raw=true)  
-(※今回はscopeやPKCEなどのパラメータは省略します)
+  
+※今回はscopeやPKCEなどのパラメータは省略しています
 
 ## 構成
 
