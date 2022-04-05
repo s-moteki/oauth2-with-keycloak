@@ -1,8 +1,8 @@
 # oauth2-with-keycloak
 
-keycloak を用いた認証機能(OAuth2.0、OpenID Connect)の提供
+keycloak を用いた認可・認証機能(OAuth2.0、OpenID Connect)の提供
 
-このリポジトリでは、APIゲートウェイを経由したエンドポイントへのアクセスを認証機能で保護するケースを想定
+このリポジトリでは、APIゲートウェイを経由したエンドポイントへのアクセスを認可機能(keycloak自身で認証も行う)で保護するケースを想定
 
 ![フロー](https://github.com/s-moteki/oauth2-with-keycloak/blob/main/docs/flow.jpg?raw=true)
 
