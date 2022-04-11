@@ -11,5 +11,7 @@ jobs:
         uses: actions/checkout@v2
       - name: compose up nginx
         run: docker-compose up -d nginx-gateway
+      - name: compose down
+        run: docker-compose down
       - name: compose up node
         run: docker-compose up -d node-gateway
